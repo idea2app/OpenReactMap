@@ -16,8 +16,8 @@ import {
 } from 'react-leaflet';
 import { CamelEventName } from 'web-utility';
 
+import { MapExposer, MapExposerProps } from './MapExposer';
 import { OpenReactMapModel } from './model';
-import { MapExposer, MapExposerProps } from './utility';
 
 export type LeafLetComponent = 'TileLayer' | 'Marker';
 
