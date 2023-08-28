@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "jsx": "react-jsx",
+        "lib": ["ES2023", "DOM"],
+        "skipLibCheck": true
+    },
+    "include": ["source/*"],
+    "typedocOptions": {
+        "name": "Open Map",
+        "excludeExternals": true,
+        "excludePrivate": true,
+        "readme": "./ReadMe.md",
+        "plugin": ["typedoc-plugin-mdn-links"]
+    }
+}

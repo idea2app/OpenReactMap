@@ -1,0 +1,6 @@
+.parcel-cache/
+docs/
+preview/
+.vscode/
+.husky/
+.github/
