@@ -5,7 +5,7 @@ import { PureComponent, ReactNode } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { render } from 'react-dom';
 
-import { OpenReactMap } from '../source';
+import { OpenReactMap, TileLayer } from '../source';
 import { Section } from './Section';
 
 configure({ enforceActions: 'never' });
@@ -67,6 +67,17 @@ export class App extends PureComponent {
                             onChange={({ address }) =>
                                 (this.mapAddressName = address)
                             }
+                        />
+                    )}
+                </Section>
+
+                <Section title="China Tile">
+                    {this.renderCode(
+                        <OpenReactMap
+                            className="vh-100"
+                            center={[34.32, 108.55]}
+                            zoom={4}
+                            renderTileLayer={() => <TileLayer vendor="GaoDe" />}
                         />
                     )}
                 </Section>

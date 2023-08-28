@@ -37,35 +37,18 @@ npm i open-react-map mobx mobx-react react@17 react-dom@17
 
 [China map in China Open-source Map project][7]
 
-#### Install Extra packages
-
-```shell
-npm i leaflet react-leaflet leaflet.chinatmsproviders
-```
-
-#### Write Wrapper component
-
 ```tsx
-// eslint-disable-next-line simple-import-sort/imports
-import { FC, useEffect } from 'react';
-import { tileLayer } from 'leaflet';
-import 'leaflet.chinatmsproviders';
-import { useMap } from 'react-leaflet';
-import { OpenReactMap, OpenReactMapProps } from 'open-react-map';
-
-function ChinaTileLayer() {
-    const map = useMap();
-
-    useEffect(() => {
-        // @ts-ignore
-        tileLayer.chinaProvider('GaoDe.Normal.Map').addTo(map);
-    }, [map]);
-
-    return <></>;
-}
+import { FC } from 'react';
+import { OpenReactMap, OpenReactMapProps, TileLayer } from 'open-react-map';
 
 const ChinaMap: FC<OpenReactMapProps> = props => (
-    <OpenReactMap {...props} renderTileLayer={() => <ChinaTileLayer />} />
+    <OpenReactMap
+        className="vh-100"
+        center={[34.32, 108.55]}
+        zoom={4}
+        renderTileLayer={() => <TileLayer vendor="GaoDe" />}
+        {...props}
+    />
 );
 export default ChinaMap;
 ```

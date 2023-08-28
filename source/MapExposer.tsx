@@ -1,12 +1,12 @@
 import { Map } from 'leaflet';
-import { RefCallback, useEffect } from 'react';
+import { FC, RefCallback, useEffect } from 'react';
 import { useMap } from 'react-leaflet';
 
 export interface MapExposerProps {
     mapRef: RefCallback<Map>;
 }
 
-export function MapExposer({ mapRef }: MapExposerProps) {
+export const MapExposer: FC<MapExposerProps> = ({ mapRef }) => {
     const map = useMap();
 
     useEffect(() => {
@@ -14,4 +14,6 @@ export function MapExposer({ mapRef }: MapExposerProps) {
     }, [map]);
 
     return <></>;
-}
+};
+
+MapExposer.displayName = 'MapExposer';
