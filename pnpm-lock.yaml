@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.5.1
     version: 0.5.1
   '@types/leaflet':
-    specifier: ^1.9.3
-    version: 1.9.3
+    specifier: ^1.9.4
+    version: 1.9.4
   koajax:
     specifier: ^0.8.6
     version: 0.8.6(jsdom@22.1.0)(typescript@5.2.2)
@@ -18,8 +18,8 @@ dependencies:
     specifier: ^1.9.4
     version: 1.9.4
   mobx-react-helper:
-    specifier: ^0.2.3
-    version: 0.2.3(mobx@6.10.0)(react@17.0.2)
+    specifier: ^0.2.7
+    version: 0.2.7(mobx@6.10.2)(react@17.0.2)
   react-leaflet:
     specifier: ^3.2.5
     version: 3.2.5(leaflet@1.9.4)(react-dom@17.0.2)(react@17.0.2)
@@ -44,8 +44,8 @@ devDependencies:
     specifier: ^8.0.3
     version: 8.0.3
   idea-react:
-    specifier: ^1.0.0-rc.21
-    version: 1.0.0-rc.21(@types/react@17.0.65)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
+    specifier: ^1.0.0-rc.22
+    version: 1.0.0-rc.22(@types/react@17.0.65)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2)
   koapache:
     specifier: ^2.2.2
     version: 2.2.2(@babel/plugin-transform-modules-commonjs@7.22.11)(@babel/preset-env@7.22.10)(@types/node@20.5.7)
@@ -53,17 +53,17 @@ devDependencies:
     specifier: ^14.0.1
     version: 14.0.1
   mobx:
-    specifier: ^6.10.0
-    version: 6.10.0
+    specifier: ^6.10.2
+    version: 6.10.2
   mobx-react:
-    specifier: ^9.0.0
-    version: 9.0.0(mobx@6.10.0)(react-dom@17.0.2)(react@17.0.2)
+    specifier: ^9.0.1
+    version: 9.0.1(mobx@6.10.2)(react-dom@17.0.2)(react@17.0.2)
   parcel:
     specifier: ^2.9.3
     version: 2.9.3(@swc/helpers@0.5.1)
   prettier:
-    specifier: ^3.0.2
-    version: 3.0.2
+    specifier: ^3.0.3
+    version: 3.0.3
   prismjs:
     specifier: ^1.29.0
     version: 1.29.0
@@ -2627,8 +2627,8 @@ packages:
       '@types/node': 20.5.7
     dev: true
 
-  /@types/leaflet@1.9.3:
-    resolution: {integrity: sha512-Caa1lYOgKVqDkDZVWkto2Z5JtVo09spEaUt2S69LiugbBpoqQu92HYFMGUbYezZbnBkyOxMNPXHSgRrRY5UyIA==}
+  /@types/leaflet@1.9.4:
+    resolution: {integrity: sha512-kfwgQf4eOxoe/tD9CaKQrBKHbc7VpyfJOG5sxsQtkH+ML9xYa8hUC3UMa0wU1pKfciJtO0pU9g9XbWhPo7iBCA==}
     dependencies:
       '@types/geojson': 7946.0.10
     dev: false
@@ -3601,8 +3601,8 @@ packages:
       safer-buffer: 2.1.2
     dev: false
 
-  /idea-react@1.0.0-rc.21(@types/react@17.0.65)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2):
-    resolution: {integrity: sha512-xD1G2GGjQfxPWGwsxhCrCFTjEH1U7poiO2MjYxmj81Pmkgx3JRT5KQMticUpNl+VwJmq3cXrf3nRFkonMLXV5A==}
+  /idea-react@1.0.0-rc.22(@types/react@17.0.65)(react-dom@17.0.2)(react@17.0.2)(typescript@5.2.2):
+    resolution: {integrity: sha512-f65Ef3MlV0hWOd5dUwtJQrToCbM72Sp0qw1t1At9IRWxLVNsKX/p3CR2DaPUJ2CFRRo1yAfY6bGTAEnM//6/ew==}
     peerDependencies:
       react: '>=16'
       react-dom: '>=16'
@@ -3615,8 +3615,8 @@ packages:
       editorjs-html: 3.4.3
       iterable-observer: 1.0.0
       lodash: 4.17.21
-      mobx: 6.10.0
-      mobx-react: 9.0.0(mobx@6.10.0)(react-dom@17.0.2)(react@17.0.2)
+      mobx: 6.10.2
+      mobx-react: 9.0.1(mobx@6.10.2)(react-dom@17.0.2)(react@17.0.2)
       prismjs: 1.29.0
       react: 17.0.2
       react-bootstrap: 2.8.0(@types/react@17.0.65)(react-dom@17.0.2)(react@17.0.2)
@@ -4152,8 +4152,8 @@ packages:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
     dev: true
 
-  /lodash.eq@4.0.0:
-    resolution: {integrity: sha512-vbrJpXL6kQNG6TkInxX12DZRfuYVllSxhwYqjYB78g2zF3UI15nFO/0AgmZnZRnaQ38sZtjCiVjGr2rnKt4v0g==}
+  /lodash.isequalwith@4.4.0:
+    resolution: {integrity: sha512-dcZON0IalGBpRmJBmMkaoV7d3I80R2O+FrzsZyHdNSFrANq/cgDqKQNmAHE8UEj4+QYWwwhkQOVdLHiAopzlsQ==}
     dev: false
 
   /lodash@4.17.21:
@@ -4254,19 +4254,19 @@ packages:
       brace-expansion: 2.0.1
     dev: true
 
-  /mobx-react-helper@0.2.3(mobx@6.10.0)(react@17.0.2):
-    resolution: {integrity: sha512-Mvpktt7aLVkvPplRiM4FrEzTx/JCMpHLj/YuWtmLcEL5PHginu6gQwThxtC8K8tagximiAvzuu6fbS3wBRHjLQ==}
+  /mobx-react-helper@0.2.7(mobx@6.10.2)(react@17.0.2):
+    resolution: {integrity: sha512-PdluyljTTe3YLbfPZKN1Onq3DN55lIWvTFmzbkVlsyTZEg//o7e/iqGGuCG1l3yDwXvLe5zqTltD5FdylSJORg==}
     peerDependencies:
       mobx: '>=4'
       react: '>=16'
     dependencies:
       '@swc/helpers': 0.5.1
-      lodash.eq: 4.0.0
-      mobx: 6.10.0
+      lodash.isequalwith: 4.4.0
+      mobx: 6.10.2
       react: 17.0.2
     dev: false
 
-  /mobx-react-lite@4.0.4(mobx@6.10.0)(react-dom@17.0.2)(react@17.0.2):
+  /mobx-react-lite@4.0.4(mobx@6.10.2)(react-dom@17.0.2)(react@17.0.2):
     resolution: {integrity: sha512-68uNYvQC/5Dazs3sIBv+bnpzRwcWde8y4ujHiLizhq8yeQtJ2tlNUGSh4r40gyE5M0utACIofBDsAj2hplcovQ==}
     peerDependencies:
       mobx: ^6.9.0
@@ -4279,14 +4279,14 @@ packages:
       react-native:
         optional: true
     dependencies:
-      mobx: 6.10.0
+      mobx: 6.10.2
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
       use-sync-external-store: 1.2.0(react@17.0.2)
     dev: true
 
-  /mobx-react@9.0.0(mobx@6.10.0)(react-dom@17.0.2)(react@17.0.2):
-    resolution: {integrity: sha512-rhUBWXK/k4H/jMXZqbL0uTPncRSvJR23tpmJemoAEjJjm0Fkv6tTLG3Cze9MIgvf882Kradx6msizuQxLAiQwA==}
+  /mobx-react@9.0.1(mobx@6.10.2)(react-dom@17.0.2)(react@17.0.2):
+    resolution: {integrity: sha512-0idiElBgNMJg20YqGgHvYEnlqIJpPDQaOkxj2dHJIZeqCvUh+zBkBkMkpUFw/uEd1OdPUvT0y+AFBqsWIUAXww==}
     peerDependencies:
       mobx: ^6.9.0
       react: ^16.8.0 || ^17 || ^18
@@ -4298,14 +4298,14 @@ packages:
       react-native:
         optional: true
     dependencies:
-      mobx: 6.10.0
-      mobx-react-lite: 4.0.4(mobx@6.10.0)(react-dom@17.0.2)(react@17.0.2)
+      mobx: 6.10.2
+      mobx-react-lite: 4.0.4(mobx@6.10.2)(react-dom@17.0.2)(react@17.0.2)
       react: 17.0.2
       react-dom: 17.0.2(react@17.0.2)
     dev: true
 
-  /mobx@6.10.0:
-    resolution: {integrity: sha512-WMbVpCMFtolbB8swQ5E2YRrU+Yu8iLozCVx3CdGjbBKlP7dFiCSuiG06uea3JCFN5DnvtAX7+G5Bp82e2xu0ww==}
+  /mobx@6.10.2:
+    resolution: {integrity: sha512-B1UGC3ieK3boCjnMEcZSwxqRDMdzX65H/8zOHbuTY8ZhvrIjTUoLRR2TP2bPqIgYRfb3+dUigu8yMZufNjn0LQ==}
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
@@ -4613,8 +4613,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.0.2:
-    resolution: {integrity: sha512-o2YR9qtniXvwEZlOKbveKfDQVyqxbEIWn48Z8m3ZJjBjcCmUy3xZGIv+7AkaeuaTr6yPXJjwv07ZWlsWbEy1rQ==}
+  /prettier@3.0.3:
+    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
