@@ -1,5 +1,7 @@
 import { HTTPClient } from 'koajax';
+import { LatLngTuple } from 'leaflet';
 import * as MobX from 'mobx';
+import { computed, observable } from 'mobx';
 import { buildURLData } from 'web-utility';
 
 export type CoordinateValue = `${number}.${number}`;
@@ -60,11 +62,36 @@ export class OpenReactMapModel {
         responseType: 'json'
     });
 
-    @MobX.observable
+    @observable
+    currentLocation?: LatLngTuple = undefined;
+
+    @observable
     searchList: PossibleLocation[] = [];
 
-    @MobX.observable
+    @observable
     reversedAddress: AddressLocation = {} as AddressLocation;
+
+    @computed
+    get reversedAddressText() {
+        return (
+            this.reversedAddress &&
+            OpenReactMapModel.addressTextOf(this.reversedAddress)
+        );
+    }
+
+    /**
+     * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/Geolocation/getCurrentPosition}
+     */
+    async locate() {
+        const {
+            coords: { latitude, longitude }
+        } = await new Promise<GeolocationPosition>((resolve, reject) =>
+            navigator.geolocation.getCurrentPosition(resolve, reject, {
+                enableHighAccuracy: true
+            })
+        );
+        return (this.currentLocation = [latitude, longitude]);
+    }
 
     /**
      * @see https://nominatim.org/release-docs/develop/api/Search/
@@ -84,5 +111,35 @@ export class OpenReactMapModel {
             `reverse?${buildURLData({ lat, lon, format: 'json' })}`
         );
         return (this.reversedAddress = body);
+    }
+
+    static addressTextOf({
+        address: {
+            country,
+            state,
+            state_district,
+            town,
+            village,
+            road,
+            neighbourhood,
+            building,
+            house_number,
+            amenity
+        }
+    }: AddressLocation) {
+        return [
+            country,
+            state,
+            state_district,
+            town,
+            village,
+            road,
+            neighbourhood,
+            building,
+            house_number,
+            amenity
+        ]
+            .filter(Boolean)
+            .join(' ');
     }
 }
