@@ -69,7 +69,7 @@ export class OpenReactMapModel {
     searchList: PossibleLocation[] = [];
 
     @observable
-    reversedAddress: AddressLocation = {} as AddressLocation;
+    reversedAddress?: AddressLocation = undefined;
 
     @computed
     get reversedAddressText() {
