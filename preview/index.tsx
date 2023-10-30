@@ -77,7 +77,11 @@ export class App extends PureComponent {
                             className="vh-100"
                             center={[34.32, 108.55]}
                             zoom={4}
+                            address={mapAddressName}
                             renderTileLayer={() => <TileLayer vendor="GaoDe" />}
+                            onChange={({ address }) =>
+                                (this.mapAddressName = address)
+                            }
                         />
                     )}
                 </Section>

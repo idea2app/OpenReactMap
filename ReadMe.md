@@ -17,7 +17,7 @@ Preview site: https://idea2app.github.io/OpenReactMap/preview/
 #### Command
 
 ```shell
-npm i open-react-map mobx mobx-react react@17 react-dom@17
+npm i open-react-map mobx mobx-react react react-dom
 ```
 
 #### `index.html`

@@ -3,7 +3,7 @@ import * as MobX from 'mobx';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { observePropsState } from 'mobx-react-helper';
-import { Component, ReactNode } from 'react';
+import { Component, PropsWithChildren, ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
     MapContainer,
@@ -32,21 +32,24 @@ export interface MarkerMeta extends Pick<MarkerProps, 'position'> {
     popup?: string;
 }
 
-export interface OpenReactMapProps
-    extends Pick<MapContainerProps, 'className' | 'style' | 'center' | 'zoom'>,
-        MapEvent<'TileLayer'>,
-        MapEvent<'Marker'>,
-        Partial<MapExposerProps> {
-    tileLayerURL?: string;
-    attribution?: ReactNode;
-    renderTileLayer?: (eventHandlers: LeafletEventHandlerFnMap) => ReactNode;
-    markers?: MarkerMeta[];
-    title?: string;
-    address?: string;
-    onChange?: (
-        data: Required<Pick<OpenReactMapProps, 'title' | 'address'>>
-    ) => any;
-}
+export type OpenReactMapProps = PropsWithChildren<
+    Pick<MapContainerProps, 'className' | 'style' | 'center' | 'zoom'> &
+        MapEvent<'TileLayer'> &
+        MapEvent<'Marker'> &
+        Partial<MapExposerProps> & {
+            tileLayerURL?: string;
+            attribution?: ReactNode;
+            renderTileLayer?: (
+                eventHandlers: LeafletEventHandlerFnMap
+            ) => ReactNode;
+            markers?: MarkerMeta[];
+            title?: string;
+            address?: string;
+            onChange?: (
+                data: Required<Pick<OpenReactMapProps, 'title' | 'address'>>
+            ) => any;
+        }
+>;
 
 /**
  * Don't forget to load LeafLet's CSS file, such as:
@@ -215,9 +218,7 @@ export class OpenReactMap extends Component<OpenReactMapProps> {
                 {...{ className, center, zoom }}
                 doubleClickZoom={!onChange}
                 touchZoom={!onChange}
-                whenCreated={
-                    onChange && (map => map.on('click', this.changeAddress))
-                }
+                ref={onChange && (map => map?.on('click', this.changeAddress))}
             >
                 {mapRef && <MapExposer mapRef={mapRef} />}
 
