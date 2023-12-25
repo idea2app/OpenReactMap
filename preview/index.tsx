@@ -1,8 +1,8 @@
-import { CodeBlock, PageNav } from 'idea-react';
+import { CodeBlock, Icon, PageNav } from 'idea-react';
 import { configure, makeObservable, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { PureComponent, ReactNode } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Collapse, Container, Row } from 'react-bootstrap';
 import { render } from 'react-dom';
 
 import { OpenReactMap, TileLayer } from '../source';
@@ -15,10 +15,22 @@ export class App extends PureComponent {
     constructor(props: {}) {
         super(props);
         makeObservable(this);
+
+        this.updateMeta();
+        window.addEventListener('resize', this.updateMeta);
     }
 
     @observable
     mapAddressName = '成都市';
+
+    @observable
+    screenPortrait = false;
+
+    @observable
+    menuOpen = false;
+
+    updateMeta = () =>
+        (this.screenPortrait = window.innerWidth < window.innerHeight);
 
     renderCode(code: ReactNode) {
         return (
@@ -38,18 +50,13 @@ export class App extends PureComponent {
 
                 <Section title="Basic">
                     {this.renderCode(
-                        <OpenReactMap
-                            className="vh-100"
-                            center={[34.32, 108.55]}
-                            zoom={4}
-                        />
+                        <OpenReactMap center={[34.32, 108.55]} zoom={4} />
                     )}
                 </Section>
 
                 <Section title="Display Address">
                     {this.renderCode(
                         <OpenReactMap
-                            className="vh-100"
                             zoom={10}
                             title="天府之国"
                             address="成都市"
@@ -60,7 +67,6 @@ export class App extends PureComponent {
                 <Section title="Pick Address">
                     {this.renderCode(
                         <OpenReactMap
-                            className="vh-100"
                             center={[30.66, 104.06]}
                             zoom={10}
                             address={mapAddressName}
@@ -74,7 +80,6 @@ export class App extends PureComponent {
                 <Section title="China Tile">
                     {this.renderCode(
                         <OpenReactMap
-                            className="vh-100"
                             center={[34.32, 108.55]}
                             zoom={4}
                             address={mapAddressName}
@@ -89,13 +94,36 @@ export class App extends PureComponent {
         );
     }
 
+    renderMenu() {
+        const { screenPortrait, menuOpen } = this;
+
+        return (
+            <>
+                <Button
+                    className="my-3 d-md-none"
+                    onClick={() => (this.menuOpen = !menuOpen)}
+                >
+                    <Icon name="list" />
+                </Button>
+                <Collapse in={screenPortrait ? menuOpen : true}>
+                    <PageNav
+                        className="sticky-top"
+                        onClick={() =>
+                            screenPortrait && (this.menuOpen = false)
+                        }
+                    />
+                </Collapse>
+            </>
+        );
+    }
+
     render() {
         return (
             <div className="bg-light">
-                <Container className="py-5" fluid="md">
+                <Container className="pb-3 py-md-5" fluid="md">
                     <Row>
-                        <Col xs={12} sm={3}>
-                            <PageNav className="sticky-top" />
+                        <Col xs={12} sm={3} className="sticky-top bg-light">
+                            {this.renderMenu()}
                         </Col>
                         <Col xs={12} sm={9}>
                             {this.renderContent()}
