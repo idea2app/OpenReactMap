@@ -201,21 +201,22 @@ export class OpenReactMap extends Component<OpenReactMapProps> {
     render() {
         const { center, markers, eventHandlerMap } = this,
             {
-                className = 'h-100',
+                style = { height: '100vh', maxHeight: '100vw' },
                 mapRef,
                 renderTileLayer = this.renderTileLayer,
                 center: _,
                 zoom,
                 markers: __,
                 onChange,
-                children
+                children,
+                ...props
             } = this.props;
 
         return !onChange && !center ? (
             children || <></>
         ) : (
             <MapContainer
-                {...{ className, center, zoom }}
+                {...{ style, center, zoom, ...props }}
                 doubleClickZoom={!onChange}
                 touchZoom={!onChange}
                 ref={onChange && (map => map?.on('click', this.changeAddress))}
