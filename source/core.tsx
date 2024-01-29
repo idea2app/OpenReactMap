@@ -1,5 +1,4 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEventHandlerFn } from 'leaflet';
-import * as MobX from 'mobx';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
 import { observePropsState } from 'mobx-react-helper';
@@ -62,11 +61,6 @@ export type OpenReactMapProps = PropsWithChildren<
 @observePropsState
 export class OpenReactMap extends Component<OpenReactMapProps> {
     static displayName = 'OpenReactMap';
-
-    constructor(props: OpenReactMapProps) {
-        super(props);
-        MobX.makeObservable?.(this);
-    }
 
     declare observedProps: OpenReactMapProps;
 

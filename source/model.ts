@@ -1,6 +1,5 @@
 import { HTTPClient } from 'koajax';
 import { LatLngTuple } from 'leaflet';
-import * as MobX from 'mobx';
 import { computed, observable } from 'mobx';
 import { buildURLData } from 'web-utility';
 
@@ -53,23 +52,19 @@ export interface AddressLocation extends Location {
 }
 
 export class OpenReactMapModel {
-    constructor() {
-        MobX.makeObservable?.(this);
-    }
-
     nominatimClient = new HTTPClient({
         baseURI: 'https://nominatim.openstreetmap.org',
         responseType: 'json'
     });
 
     @observable
-    currentLocation?: LatLngTuple = undefined;
+    accessor currentLocation: LatLngTuple | undefined;
 
     @observable
-    searchList: PossibleLocation[] = [];
+    accessor searchList: PossibleLocation[] = [];
 
     @observable
-    reversedAddress?: AddressLocation = undefined;
+    accessor reversedAddress: AddressLocation | undefined;
 
     @computed
     get reversedAddressText() {
