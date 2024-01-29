@@ -2,11 +2,18 @@
 
 Compatible Map component supports Geo services with **Freedom** or **Open API**, based on [TypeScript][1], [MobX][2] & [React][3].
 
-[![MobX compatibility](https://img.shields.io/badge/Compatible-1?logo=mobx&label=MobX%204%2F5%2F6)][2]
+[![MobX compatibility](https://img.shields.io/badge/Compatible-1?logo=mobx&label=MobX%206%2F7)][2]
 [![NPM Dependency](https://img.shields.io/librariesio/github/idea2app/OpenReactMap.svg)][4]
 [![CI & CD](https://github.com/idea2app/OpenReactMap/actions/workflows/main.yml/badge.svg)][5]
 
 [![NPM](https://nodei.co/npm/open-react-map.png?downloads=true&downloadRank=true&stars=true)][6]
+
+## Versions
+
+| SemVer  |    status    | ES decorator |    MobX     |
+| :-----: | :----------: | :----------: | :---------: |
+| `>=0.8` | ✅developing |   stage-3    |  `>=6.11`   |
+| `<0.8`  | ❌deprecated |   stage-2    | `>=4 <6.11` |
 
 ## Usage
 
@@ -18,6 +25,22 @@ Preview site: https://idea2app.github.io/OpenReactMap/preview/
 
 ```shell
 npm i open-react-map mobx mobx-react react react-dom
+```
+
+#### `tsconfig.json`
+
+Compatible with MobX 6/7:
+
+```json
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "moduleResolution": "Node",
+        "useDefineForClassFields": true,
+        "experimentalDecorators": false,
+        "jsx": "react-jsx"
+    }
+}
 ```
 
 #### `index.html`

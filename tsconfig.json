@@ -1,7 +1,9 @@
 {
     "compilerOptions": {
+        "target": "ES6",
+        "moduleResolution": "Node",
         "esModuleInterop": true,
-        "experimentalDecorators": true,
+        "useDefineForClassFields": true,
         "jsx": "react-jsx",
         "lib": ["ES2023", "DOM"],
         "skipLibCheck": true
