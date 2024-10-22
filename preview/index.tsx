@@ -3,7 +3,7 @@ import { configure, observable } from 'mobx';
 import { observer } from 'mobx-react';
 import { PureComponent, ReactNode } from 'react';
 import { Button, Col, Collapse, Container, Row } from 'react-bootstrap';
-import { render } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { OpenReactMap, TileLayer } from '../source';
 import { Section } from './Section';
@@ -134,4 +134,4 @@ export class App extends PureComponent {
     }
 }
 
-render(<App />, document.querySelector('main'));
+createRoot(document.querySelector('main')).render(<App />);
