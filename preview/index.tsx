@@ -1,7 +1,7 @@
 import { CodeBlock, Icon, PageNav } from 'idea-react';
 import { configure, observable } from 'mobx';
 import { observer } from 'mobx-react';
-import { PureComponent, ReactNode } from 'react';
+import { Component, ReactNode } from 'react';
 import { Button, Col, Collapse, Container, Row } from 'react-bootstrap';
 import { createRoot } from 'react-dom/client';
 
@@ -11,10 +11,8 @@ import { Section } from './Section';
 configure({ enforceActions: 'never' });
 
 @observer
-export class App extends PureComponent {
-    constructor(props: {}) {
-        super(props);
-
+export class App extends Component {
+    componentDidMount() {
         this.updateMeta();
         window.addEventListener('resize', this.updateMeta);
     }
@@ -105,12 +103,13 @@ export class App extends PureComponent {
                     <Icon name="list" />
                 </Button>
                 <Collapse in={screenPortrait ? menuOpen : true}>
-                    <PageNav
-                        className="sticky-top"
-                        onClick={() =>
-                            screenPortrait && (this.menuOpen = false)
-                        }
-                    />
+                    <div className="sticky-top">
+                        <PageNav
+                            onClick={() =>
+                                screenPortrait && (this.menuOpen = false)
+                            }
+                        />
+                    </div>
                 </Collapse>
             </>
         );
@@ -121,10 +120,10 @@ export class App extends PureComponent {
             <div className="bg-light">
                 <Container className="pb-3 py-md-5" fluid="md">
                     <Row>
-                        <Col xs={12} sm={3} className="sticky-top bg-light">
+                        <Col xs={12} md={3} className="sticky-top bg-light">
                             {this.renderMenu()}
                         </Col>
-                        <Col xs={12} sm={9}>
+                        <Col xs={12} md={9}>
                             {this.renderContent()}
                         </Col>
                     </Row>

@@ -1,8 +1,8 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEventHandlerFn } from 'leaflet';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
-import { observePropsState } from 'mobx-react-helper';
-import { Component, PropsWithChildren, ReactNode } from 'react';
+import { ObservedComponent } from 'mobx-react-helper';
+import { PropsWithChildren, ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
     MapContainer,
@@ -58,11 +58,8 @@ export type OpenReactMapProps = PropsWithChildren<
  * ```
  */
 @observer
-@observePropsState
-export class OpenReactMap extends Component<OpenReactMapProps> {
+export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
     static displayName = 'OpenReactMap';
-
-    declare observedProps: OpenReactMapProps;
 
     store = new OpenReactMapModel();
 
@@ -213,7 +210,12 @@ export class OpenReactMap extends Component<OpenReactMapProps> {
                 {...{ style, center, zoom, ...props }}
                 doubleClickZoom={!onChange}
                 touchZoom={!onChange}
-                ref={onChange && (map => map?.on('click', this.changeAddress))}
+                ref={
+                    onChange &&
+                    (map => {
+                        map?.on('click', this.changeAddress);
+                    })
+                }
             >
                 {mapRef && <MapExposer mapRef={mapRef} />}
 
