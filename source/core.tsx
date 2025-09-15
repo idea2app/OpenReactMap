@@ -1,7 +1,7 @@
 import { LeafletEventHandlerFnMap, LeafletMouseEventHandlerFn } from 'leaflet';
 import { computed } from 'mobx';
 import { observer } from 'mobx-react';
-import { ObservedComponent } from 'mobx-react-helper';
+import { ObservedComponent, reaction } from 'mobx-react-helper';
 import { PropsWithChildren, ReactNode } from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import {
@@ -50,13 +50,6 @@ export type OpenReactMapProps = PropsWithChildren<
         }
 >;
 
-/**
- * Don't forget to load LeafLet's CSS file, such as:
- *
- * ```html
- * <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
- * ```
- */
 @observer
 export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
     static displayName = 'OpenReactMap';
@@ -105,13 +98,12 @@ export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
     }
 
     componentDidMount() {
-        const { address } = this.props;
-
-        if (address) this.store.search(address);
+        this.search();
     }
 
-    componentDidUpdate({ address }: Readonly<OpenReactMapProps>) {
-        if (this.props.address !== address) this.componentDidMount();
+    @reaction(({ observedProps }) => observedProps.address)
+    search(address = this.props.address) {
+        if (address) this.store.search(address);
     }
 
     changeAddress: LeafletMouseEventHandlerFn = async ({
@@ -189,7 +181,7 @@ export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
         );
     };
 
-    render() {
+    renderMap() {
         const { center, markers, eventHandlerMap } = this,
             {
                 style = { height: '100vh', maxHeight: '100vw' },
@@ -203,9 +195,7 @@ export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
                 ...props
             } = this.props;
 
-        return !onChange && !center ? (
-            children || <></>
-        ) : (
+        return (
             <MapContainer
                 {...{ style, center, zoom, ...props }}
                 doubleClickZoom={!onChange}
@@ -236,6 +226,21 @@ export class OpenReactMap extends ObservedComponent<OpenReactMapProps> {
                 ))}
                 {children}
             </MapContainer>
+        );
+    }
+
+    render() {
+        const { center } = this,
+            { children, onChange } = this.props;
+
+        return (
+            <>
+                <link
+                    rel="stylesheet"
+                    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+                />
+                {!onChange && !center ? children || <></> : this.renderMap()}
+            </>
         );
     }
 }
