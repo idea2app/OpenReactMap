@@ -1,6 +1,3 @@
-.parcel*
+.*
 docs/
 preview/
-.vscode/
-.husky/
-.github/
